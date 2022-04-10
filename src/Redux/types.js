@@ -1,0 +1,6 @@
+export default {
+    LOGIN:'LOGIN',
+    CLEARE_REDUX_STATE:'CLEARE_REDUX_STATE',
+    ITEMS:'ITEMS',
+    ADD_ITEM: 'ADD_ITEM'
+}
