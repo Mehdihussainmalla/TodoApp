@@ -8,11 +8,3 @@ export default appReducer = combineReducers({
   items,
 });
 
-// const rootReducer = (state, action) => {
-//     if (action.type == types.CLEARE_REDUX_STATE) {
-//         state = undefined
-//     }
-//     return appReducer(state, action)    
-// }
-
-// export default rootReducer

@@ -1,10 +1,10 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
 
-const BtnComp = ({title , onPress,}) => {
+const BtnComp = ({title , onPress,disable}) => {
   return (
     <View>
-      <TouchableOpacity activeOpacity={0.8} onPress={onPress} style={styles.btnStyle} >
+      <TouchableOpacity activeOpacity={0.8} onPress={onPress} style={styles.btnStyle} disabled={disable}>
           <Text style={styles.btnText} >{title}</Text>
       </TouchableOpacity>
     </View>

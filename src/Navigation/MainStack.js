@@ -2,7 +2,9 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import HomeStack from './HomeStack'
 import navigationStrings from './navigationStrings'
-import HomeScreen from '../Screens/HomeScreen'
+
+
+
 
 
 const MainStack = (Stack) => {

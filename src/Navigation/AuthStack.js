@@ -1,7 +1,8 @@
-import LoginScreen from "../Screens/LoginScreen";
+
 import { View, Text } from 'react-native'
 import React from 'react'
 import navigationStrings from "./navigationStrings";
+import LoginScreen from '../Screens/LoginScreen/LoginScreen';
 
 const AuthStack = (Stack) => {
   return (

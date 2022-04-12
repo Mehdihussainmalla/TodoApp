@@ -1,12 +1,10 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, Text, View,SafeAreaView,TouchableOpacity } from 'react-native'
-import TextInputComponent from '../Components/TextInputComponent/TextInputComponent'
-  
+import TextInputComponent from '../../Components/TextInputComponent/TextInputComponent';
+import actions from '../../Redux/actions';
+import styles from './style'
 
-//   import {useDispatch} from 'react-redux'
-import navigationStrings from '../Navigation/navigationStrings';
-import Actions from '../Redux/Actions';
 
 const LoginScreen = () => {
     const emailRegex = /^[\w-\.\_\$]{2,}@([\w]{3,5}\.)[\w]{2,4}$/;
@@ -16,7 +14,7 @@ const LoginScreen = () => {
     
   
     const [password, setPassword] = useState('');
-    // const useDispatch=useDispatch();
+
    
 
     const handleLogin =()=>{
@@ -49,10 +47,8 @@ const LoginScreen = () => {
       }
       else
       { 
-        //   useDispatch(LoginBtn())
-        //   console.log(email,password)
-        // Actions.addItem(email,password);
-        Actions.Login({email,password})  
+    
+        actions.Login({email,password})  
       }
 
 
@@ -80,29 +76,29 @@ placeholder='enter password'
 
 export default LoginScreen
 
-const styles = StyleSheet.create({
+// const styles = StyleSheet.create({
 
-    loginview:{
-        justifyContent:'center',
-         height: '100%', 
-         width: '100%',
-          padding: 16,
-          backgroundColor:'lightgrey'
-    },
-    btnview:{
-        backgroundColor:'blue',
-        borderRadius:10,
-       // marginHorizontal:35,
-        justifyContent:'center',
-        alignContent:'center',
-    marginVertical:15,
-    marginLeft:45,
-    width:'65%'
-},
-loginbtn:{
-    fontSize:25,
-    margin:5,
-    color:'#fff',
-     fontWeight:'500',
-     textAlign:'center'}
-})
+//     loginview:{
+//         justifyContent:'center',
+//          height: '100%', 
+//          width: '100%',
+//           padding: 16,
+//           backgroundColor:'lightgrey'
+//     },
+//     btnview:{
+//         backgroundColor:'blue',
+//         borderRadius:10,
+//        // marginHorizontal:35,
+//         justifyContent:'center',
+//         alignContent:'center',
+//     marginVertical:15,
+//     marginLeft:45,
+//     width:'65%'
+// },
+// loginbtn:{
+//     fontSize:25,
+//     margin:5,
+//     color:'#fff',
+//      fontWeight:'500',
+//      textAlign:'center'}
+// })

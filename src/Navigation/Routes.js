@@ -16,8 +16,8 @@ const Routes = () => {
   return (
   <NavigationContainer>
 
-      {UserData? MainStack(Stack) : AuthStack(Stack)}
-      {/* { MainStack(Stack) } */}
+      {/* {UserData? MainStack(Stack) : AuthStack(Stack)} */}
+      { MainStack(Stack) }
      {/* { AuthStack(Stack)} */}
   </NavigationContainer>
 
