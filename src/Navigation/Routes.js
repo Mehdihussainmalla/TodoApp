@@ -5,13 +5,13 @@ import MainStack from './MainStack'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeStack from './HomeStack';
 import { useSelector } from 'react-redux' 
 const Stack = createNativeStackNavigator();
 
 
 const Routes = () => {
   const UserData = useSelector(data => data.auth.isLogin);
+  
   console.log(UserData,"UserDataaaaaa")
   return (
   <NavigationContainer>

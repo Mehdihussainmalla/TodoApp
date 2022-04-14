@@ -1,8 +1,9 @@
 import types from "../types";
+
 const initial_Data= {
     list: [],
 };
-export default (state=initial_Data, action)=>{
+export default (state = initial_Data, action) => {
     switch (action.type) {
         case types.ADD_ITEM:
             console.log(action.payload,"adddddddditeeemsssss in reducer")
@@ -22,12 +23,6 @@ export default (state=initial_Data, action)=>{
                     }
                 ]
             
-                // return{
-                //     ...state,
-                //     list:[...state.list, { id:id,
-
-                //     } ,action.payload]
-                // }
       };
 
 
@@ -40,8 +35,9 @@ export default (state=initial_Data, action)=>{
 
                   return{
                       list:filteredList,
-                    //   ...state,list:filteredList
+                    
                   }
+
             
     
         default:

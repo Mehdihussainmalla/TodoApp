@@ -1,4 +1,5 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
+import colors from '../../styles/colors';
 
 export const styles = StyleSheet.create({
     container:
@@ -6,46 +7,43 @@ export const styles = StyleSheet.create({
         // justifyContent:'center',
         height: '100%',
         width: '100%',
-       // padding: 10,
-       // backgroundColor: 'skyblue',
+        // padding: 10,
+        // backgroundColor: 'skyblue',
 
     },
     heading: {
-    // borderRadius:10,
-    justifyContent:'center',
+        // borderRadius:10,
+        justifyContent: 'center',
         alignItems: 'center',
         height: 40,
         width: "100%",
         backgroundColor: 'green'
     },
     adddetails: {
-        textAlign:'center',
+        textAlign: 'center',
         fontSize: 20,
         color: '#ffff',
-        fontWeight:'500'
+        fontWeight: '500'
     },
-    addtaskview:{
-        
-        marginHorizontal:25,
-                 borderRadius:10,
-                justifyContent:'center',
-                alignItems: 'center',
-                height: 40,
-                width: "38%",
-                marginTop:20,
-                backgroundColor: 'green',
-                
+    addtaskview: {
+
+        marginHorizontal: 35,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 40,
+        width: "65%",
+        marginTop: 20,
+        backgroundColor:colors.green,
+
 
     },
-    addtaskbutton:{
-        backgroundColor:'green',
-         fontSize:25,
-        color:'#fff',
-        fontWeight:'400'
-}
-
-
-
-});
+    addtaskbutton: {
+      
+        fontSize: 25,
+        color: '#fff',
+        fontWeight: '400'
+    },
+    });
 
 

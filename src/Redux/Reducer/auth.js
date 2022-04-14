@@ -1,7 +1,7 @@
 import types from "../types";
 const initialState = {
-    //   listData: [],
     isLogin: false,
+    isLogout : false,
 };
 
 
@@ -13,6 +13,12 @@ export default (state = initialState, action) => {
                 ...state,
                 isLogin: true
             };
+            case types .LOGOUT:
+                console.log(action.payload," check logout from reducerrr");
+                return{
+                    ...state, 
+                   isLogout:true
+                }
             
         default:
             return {...state};

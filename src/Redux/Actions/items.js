@@ -1,4 +1,4 @@
-import store from "../Store";
+import store from "../store";
 import types from "../types";
 
 const { dispatch } = store;
@@ -19,7 +19,14 @@ export const deleteItem= id => {
     console.log("delete item",deleteItem)
     dispatch({
         type:types.DELETE_ITEM,
-        // payload:id 
         id
     })
+} 
+export const editData =  (itemId, itemvalue)=>{
+    console.log('update data',editData )
+    dispatch({
+        type : types.EDIT_ITEM,
+        payload:{itemId,itemvalue}
+    })
 }
+

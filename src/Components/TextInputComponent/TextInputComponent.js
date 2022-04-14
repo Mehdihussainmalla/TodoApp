@@ -4,14 +4,14 @@ import {moderateVerticalScale} from 'react-native-size-matters';
 
 const TextInputComponent = ({
     placeholder='',
-    keyboardType='',
+    // keyboardType='',
     onChangeText=''
 }) => {
     
   return (
       <SafeAreaView style={{marginTop:20}}>
            <TextInput onChangeText={onChangeText} placeholder={placeholder}
-           keyboardType={keyboardType}
+        //    keyboardType={keyboardType}
 
             style={styles.input}
 

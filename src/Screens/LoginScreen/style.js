@@ -1,6 +1,6 @@
 
 import {StyleSheet} from 'react-native';
-const styles = StyleSheet.create({
+export default  styles = StyleSheet.create({
 
     loginview:{
         justifyContent:'center',
@@ -24,6 +24,6 @@ loginbtn:{
     margin:5,
     color:'#fff',
      fontWeight:'500',
-     textAlign:'center'
-    },
+     textAlign:'center'}
+     ,
 })
