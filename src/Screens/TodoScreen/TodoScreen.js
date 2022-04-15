@@ -30,7 +30,7 @@ const TodoScreen = ({ navigation,route}) => {
     const [address, setAdress] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
    
-   
+   const userId= Math.floor(Math.random()*1000)
    
     useEffect(()=>{
 
@@ -83,15 +83,16 @@ const TodoScreen = ({ navigation,route}) => {
             console.log('Invalid Phone Number')
         }
         else {
-            const userData = {
+            const userData = [{
+                userId:userId,
 
                 name: name,
                 phoneNumber: phoneNumber,
                 address: address,
                 age: age,
                 rollNo: rollNo
-            }
-            console.log(userData,)
+            }]
+            console.log(userData,'user data through reduxxxx')
             Actions.addItem(userData)
             navigation.navigate(navigationStrings.HOMESCREEN)
 

@@ -3,15 +3,13 @@ import types from "../types";
 
 const { dispatch } = store;
 export const addItem = (data)=>{
-    console.log("adddddddd items in actionssss",addItem)
+    console.log("adddddddd items in actionssss",data)
     dispatch({
         type:types.ADD_ITEM,
-        payload:{
-        id:Math.floor(Math.random()*1000),
-        data:data
+        payload:data
         
         
-     } })
+      })
 
 
 }
@@ -22,11 +20,11 @@ export const deleteItem= id => {
         id
     })
 } 
-export const editData =  (itemId, itemvalue)=>{
-    console.log('update data',editData )
+export const updateItems =  (data)=>{
+    console.log('update data',data)
     dispatch({
-        type : types.EDIT_ITEM,
-        payload:{itemId,itemvalue}
+        type : types.UPDATE_LIST,
+        payload:data
     })
 }
 

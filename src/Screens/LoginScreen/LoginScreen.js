@@ -15,6 +15,11 @@ const LoginScreen = () => {
   
     const [password, setPassword] = useState('');
 
+
+    const userData={
+      email: email,
+      password: password
+    }
    
 
     const handleLogin =()=>{
@@ -48,7 +53,7 @@ const LoginScreen = () => {
       else
       { 
     
-        actions.Login({email,password})  
+        actions.Login([userData])  
       }
 
 

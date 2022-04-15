@@ -5,23 +5,32 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import store from './src/Redux/store';
 import types from './src/Redux/types';
-import { getData } from './src/utils/utils';
+import { getData, getLogin } from './src/utils/utils';
+import actions from './src/Redux/actions';
+
+
 
 
 const App = () => {
+
+  
   useEffect(() => {
+    getLogin().then((res)=>{
+      // console.log("get login",res)
+      actions.Login(res)
+    })
+
+   
     getData().then((res) => {
-      console.log("store data", res)
-      if (!!res) {
-        dispatch({
-          type:types.ADD_ITEM,
-          payload: res
-        })
+      // console.log("store data", res)
+      if(!!res){
+        actions.addItem(res)
       }
     })
   }, [])
+  
 
-  const {dispatch}= store;
+  
   return (
      
     <Provider store={store} >

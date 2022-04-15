@@ -1,26 +1,39 @@
+import { setLogin,getLogin, removeData} from "../../utils/utils";
 import types from "../types";
 const initialState = {
-    isLogin: false,
-    isLogout : false,
+    userData:{},
+   
 };
 
 
-export default (state = initialState, action) => {
+const userStatus = (state = initialState, action) => {
     switch (action.type) {
         case types.LOGIN:
-            console.log(action.payload, 'reducerrrrrrrrr');
+            console.log(action.payload, 'check login ');
+            const data=action.payload
+            console.log("reducer User login" , data)
+                    setLogin(data)
+          
             return {
-                ...state,
-                isLogin: true
+                
+                ...state.userData,
+                userData:data
+    
             };
             case types .LOGOUT:
-                console.log(action.payload," check logout from reducerrr");
-                return{
-                    ...state, 
-                   isLogout:true
+                removeData();
+                getLogin().then((res)=>{
+                    console.log('user status',res)
+                    return{...state.userData,userData:res}
+
                 }
+                )
+                return{...state.userData,userData:undefined}
+                
             
         default:
             return {...state};
     }
 }
+
+export default userStatus

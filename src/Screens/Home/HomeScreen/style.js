@@ -82,23 +82,17 @@ export const styles = StyleSheet.create({
         marginRight: 10
     },
     logoutview: {
-        backgroundColor: colors.green,
-        marginHorizontal: 25,
-        margin: 30,
-        paddingHorizontal: 20,
-        width: '30%',
-        borderRadius: 10,
-        paddingVertical: 5
+        justifyContent:'center',
+        margin:20,
+                marginHorizontal:10,
+                backgroundColor:'green',
+                borderRadius:8,height:40,
+                alignContent:'center',
+                alignSelf:'center',
+                width:100
 
     },
-    logoutbtn: {
-        fontSize: 30,
-        fontWeight: '300',
-        alignSelf: 'center',
-        color: colors.white,
-
-
-    },
+    
     iconview: {
         justifyContent: 'space-between',
         flexDirection: 'row', margin: 5

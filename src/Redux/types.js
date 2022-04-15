@@ -5,5 +5,5 @@ export default {
     ADD_ITEM: 'ADD_ITEM',
     DELETE_ITEM:'DELETE_ITEM',   
     LOGOUT: 'LOGOUT',
-    EDIT_ITEM : 'EDIT_ITEM'
+    UPDATE_LIST : 'UPDATE_LIST'
 }

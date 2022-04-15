@@ -1,4 +1,5 @@
 import types from "../types";
+import { storeData } from "../../utils/utils";
 
 const initial_Data= {
     list: [],
@@ -6,24 +7,19 @@ const initial_Data= {
 export default (state = initial_Data, action) => {
     switch (action.type) {
         case types.ADD_ITEM:
-            console.log(action.payload,"adddddddditeeemsssss in reducer")
-            const {id,data}=action.payload;
+           let newArray=state.list.concat(action.payload)
+            console.log(action.payload,"items concatenated")
+      
             
-            
+            storeData(newArray).then((value)=>{
+                console.log('items are stored data',value)
+            })
                 return{
-                list:[
-                    ...state.list,
-                    {
-                        id:id,
-                        name:data.name,
-                        age : data.age,
-                        rollNo : data.rollNo,
-                        address : data.address,
-                        phoneNo:data.phoneNumber
-                    }
-                ]
-            
-      };
+                
+                    ...state,
+                    list:newArray
+
+                   };
 
 
 
@@ -32,11 +28,14 @@ export default (state = initial_Data, action) => {
                 const filteredList = state.list.filter(
                     (item) => item.id !== action.id,
                   );
-
+                    storeData(filteredList)
                   return{
                       list:filteredList,
                     
                   }
+                  case types.UPDATE_LIST:
+                      let updateArray=[...state.list]
+                      
 
             
     

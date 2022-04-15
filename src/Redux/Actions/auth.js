@@ -4,18 +4,18 @@ import types from "../types";
 
 const { dispatch } = store;
 
-export const Login = ( loginData) =>{
-    console.log('loginData in actions', loginData)
+export const Login = ( data) =>{
+    console.log('loginData in actions', data)
     dispatch({
         type: types.LOGIN,
-        payload: loginData,
+        payload: data,
+        
     });
 }
-export const Logout = (logoutdata) => {
-    //console.log('logout data',logoutdata)
+export const Logout = () => {
     dispatch({
         type:types.LOGOUT ,
-        //payload:logoutdata,
+        //payload:data,
         
     });
 }
