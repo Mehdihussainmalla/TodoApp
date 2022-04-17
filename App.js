@@ -3,10 +3,11 @@ import React, { useEffect } from 'react'
 import Routes from './src/Navigation/Routes';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import store from './src/Redux/store';
 import types from './src/Redux/types';
 import { getData, getLogin } from './src/utils/utils';
-import actions from './src/Redux/actions';
+import Store from './src/Redux/Store'
+import Actions from './src/Redux/Actions'
+
 
 
 
@@ -17,14 +18,14 @@ const App = () => {
   useEffect(() => {
     getLogin().then((res)=>{
       // console.log("get login",res)
-      actions.Login(res)
+      Actions.Login(res)
     })
 
    
     getData().then((res) => {
       // console.log("store data", res)
       if(!!res){
-        actions.addItem(res)
+        Actions.addItem(res)
       }
     })
   }, [])
@@ -33,7 +34,7 @@ const App = () => {
   
   return (
      
-    <Provider store={store} >
+    <Provider store={Store} >
      
    <SafeAreaProvider>
        <Routes/>

@@ -6,17 +6,19 @@ import BtnComp from '../../../Components/BtnComp'
 import navigationStrings from '../../../Navigation/navigationStrings'
 import { styles } from './style'
 import imagePath from '../../../constants/imagePath'
-import { deleteItem } from '../../../Redux/actions/items'
-import actions from '../../../Redux/actions'
-
-
-
+import { deleteItem } from '../../../Redux/Actions/items'
+import Actions from '../../../Redux/Actions'
 
 const HomeScreen = () => {
     const list = useSelector(data => data?.items?.list)
     //  const some = {listData}
     console.log(list, "list")
     const navigation = useNavigation();
+    const HandleLogout = () => {
+        alert('logout sucessfully finally')
+        Actions.Logout();
+    }
+
 
 
     const handlerEditDetails = (e, item) => {
@@ -47,14 +49,13 @@ const HomeScreen = () => {
                                 <Text>Roll No: {item.rollNo}</Text>
                                 <Text>Address: {item.address}</Text>
                                 <Text>PhoneNumber:{item.phoneNumber}</Text>
+                                {/* <Text>{item.userId}</Text> */}
                                 <View style={styles.iconview}>
 
-                                    <TouchableOpacity onPress={() => deleteItem(item.id)}
+                                    <TouchableOpacity onPress={() => deleteItem(item.userId)}
                                         style={styles.detelestyle}>
                                         <Image style={styles.deleteicon}
                                             source={imagePath.delet_icon}></Image>
-
-
                                     </TouchableOpacity>
 
                                     <TouchableOpacity onPress={(e) => handlerEditDetails(e, item)}
@@ -84,7 +85,7 @@ const HomeScreen = () => {
                         </View>
                         <View style={{ backgroundColor: !list.length > 0 ? 'grey' : 'red' }} >
                             <BtnComp
-                             
+
                                 title="Add More"
                                 onPress={() => navigation.navigate(navigationStrings.TODOSCREEN)}
                             />
@@ -92,12 +93,16 @@ const HomeScreen = () => {
 
 
                     </View>
-                    <TouchableOpacity onPress={actions.Logout()} style={styles.logoutview}>
-                        <BtnComp title='logout' />
+                    <TouchableOpacity
+                        // onPress={HandleLogout} 
+                        style={styles.logoutview}>
+                        <BtnComp title='logout'
+                            onPress={HandleLogout}
+                        // onPress={()=>alert('hey')}
+                        />
                     </TouchableOpacity>
-            
-               </View>
-                    
+                </View>
+
             </ScrollView>
 
         </SafeAreaView >

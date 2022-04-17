@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import Actions from '../../Redux/actions';
+import Actions from '../../Redux/Actions';
 import navigationStrings from '../../Navigation/navigationStrings';
 import TextInputComponent from '../../Components/TextInputComponent/TextInputComponent';
 import { styles } from './style';
@@ -11,12 +11,6 @@ import { storeData } from '../../utils/utils';
 const TodoScreen = ({ navigation,route}) => {
 
     const allData=route?.params?.paramData
-
-   
-
-    
-    
-
 
     const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
     const ageRegex = /^100|[1-9]?\d$/;
@@ -55,7 +49,7 @@ const TodoScreen = ({ navigation,route}) => {
             console.log('please enter name')
         }
         else if (!nameRegex.test(name)) {
-            console.log("please enter correct name")
+            console.log ("please enter correct name")
         }
         else if (age === '') {
             console.log('please enter age')
@@ -124,6 +118,8 @@ const TodoScreen = ({ navigation,route}) => {
                 <TextInputComponent onChangeText={event => setPhoneNumber(event)}
                     placeholder='Enter Phone Number' />
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                   
+                   
                     <TouchableOpacity activeOpacity={0.7}
                      onPress={AddData}>
 

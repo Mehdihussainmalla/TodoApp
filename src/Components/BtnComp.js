@@ -12,22 +12,22 @@ const BtnComp = ({title , onPress,disable}) => {
 }
 
 const styles = StyleSheet.create({
-    btnStyle:{
-        paddingHorizontal:10,
-        paddingVertical:5,
-        justifyContent:"center",
-        alignItems:'center',
-        borderRadius:5,
-       //backgroundColor:'grey',
-        alignContent:'center',
-        height:42,
-    },
-    btnText:{
-        fontSize:15,
-        textAlign:'center',
-        alignSelf:'center',
-        color:'white'
-    }
+      btnStyle:{
+          paddingHorizontal:10,
+          paddingVertical:5,
+          justifyContent:"center",
+          alignItems:'center',
+          borderRadius:5,
+        //backgroundColor:'grey',
+          alignContent:'center',
+          height:42,
+      },
+      btnText:{
+          fontSize:15,
+          textAlign:'center',
+          alignSelf:'center',
+          color:'white'
+      }
 })
 
 export default BtnComp

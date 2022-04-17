@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View,SafeAreaView,TouchableOpacity } from 'react-native'
 import TextInputComponent from '../../Components/TextInputComponent/TextInputComponent';
-import actions from '../../Redux/actions';
+import Actions from '../../Redux/Actions'
 import styles from './style'
 
 
@@ -53,7 +53,7 @@ const LoginScreen = () => {
       else
       { 
     
-        actions.Login([userData])  
+        Actions.Login([userData])  
       }
 
 

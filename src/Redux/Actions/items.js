@@ -1,7 +1,7 @@
-import store from "../store";
+import Store from '../Store'
 import types from "../types";
 
-const { dispatch } = store;
+const { dispatch } = Store;
 export const addItem = (data)=>{
     console.log("adddddddd items in actionssss",data)
     dispatch({
@@ -14,17 +14,19 @@ export const addItem = (data)=>{
 
 }
 export const deleteItem= id => {
-    console.log("delete item",deleteItem)
+    const Itemid = id
+    // alert(Itemid)
+    console.log("delete item",Itemid)
     dispatch({
         type:types.DELETE_ITEM,
-        id
+        id: Itemid
     })
 } 
 export const updateItems =  (data)=>{
     console.log('update data',data)
     dispatch({
         type : types.UPDATE_LIST,
-        payload:data
+        //payload:data
     })
 }
 

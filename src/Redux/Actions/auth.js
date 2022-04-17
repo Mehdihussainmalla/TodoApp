@@ -1,8 +1,8 @@
-import store from "../store";
+import Store from '../Store'
 import types from "../types";
 
 
-const { dispatch } = store;
+const { dispatch } = Store;
 
 export const Login = ( data) =>{
     console.log('loginData in actions', data)
@@ -15,7 +15,7 @@ export const Login = ( data) =>{
 export const Logout = () => {
     dispatch({
         type:types.LOGOUT ,
-        //payload:data,
+        // payload:data,
         
     });
 }
