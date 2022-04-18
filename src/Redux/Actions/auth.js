@@ -15,7 +15,8 @@ export const Login = ( data) =>{
 export const Logout = () => {
     dispatch({
         type:types.LOGOUT ,
-        // payload:data,
+
+     
         
     });
 }

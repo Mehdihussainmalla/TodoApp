@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
           height:42,
       },
       btnText:{
-          fontSize:15,
+          fontSize:20,
           textAlign:'center',
           alignSelf:'center',
           color:'white'
