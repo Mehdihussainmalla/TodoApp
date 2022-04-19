@@ -1,8 +1,8 @@
-import Store from '../Store'
+import store from "../store";
 import types from "../types";
 
 
-const { dispatch } = Store;
+const { dispatch } = store;
 
 export const Login = ( data) =>{
     console.log('loginData in actions', data)

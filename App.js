@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View ,SafeAreaView } from 'react-native'
 import React, { useEffect } from 'react'
-import Routes from './src/Navigation/Routes';
+import Routes from './src/navigation/Routes'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import types from './src/Redux/types';
 import { getData, getLogin } from './src/utils/utils';
-import Store from './src/Redux/Store'
-import Actions from './src/Redux/Actions'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import strings from './src/constants/lang';
+import store from './src/Redux/store';
+import actions from './src/Redux/actions'
 
 
 
@@ -31,7 +31,7 @@ const App = () => {
     getData().then((res) => {
       // console.log("store data", res)
       if(!!res){
-        Actions.addItem(res)
+        actions.addItem(res)
       }
     })
   }, [])
@@ -54,7 +54,7 @@ const App = () => {
   
   return (
      
-    <Provider store={Store} >
+    <Provider store={store} >
      
    <SafeAreaProvider>
        <Routes/>

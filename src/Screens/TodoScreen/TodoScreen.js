@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import Actions from '../../Redux/Actions';
-import navigationStrings from '../../Navigation/navigationStrings';
+import actions from '../../Redux/actions'
+import navigationStrings from '../../navigation/navigationStrings';
 import TextInputComponent from '../../Components/TextInputComponent/TextInputComponent';
 import { styles } from './style';
 import { storeData } from '../../utils/utils';
@@ -87,7 +87,7 @@ const TodoScreen = ({ navigation,route}) => {
                 rollNo: rollNo
             }]
             console.log(userData,'user data through reduxxxx')
-            Actions.addItem(userData)
+            actions.addItem(userData)
             navigation.navigate(navigationStrings.HOMESCREEN)
 
         }

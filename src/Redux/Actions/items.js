@@ -1,7 +1,7 @@
-import Store from '../Store'
+import store from "../store";
 import types from "../types";
 
-const { dispatch } = Store;
+const { dispatch } = store;
 export const addItem = (data)=>{
     console.log("adddddddd items in actionssss",data)
     dispatch({

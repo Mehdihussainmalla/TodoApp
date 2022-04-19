@@ -6,5 +6,8 @@ export default {
     FRENCH :'FRANÇAISE',
     ENGLISH : 'ANGLAISE',
     HIDE : 'cacher',
-     URDU :'ourdou'
+     URDU :'ourdou',
+     LOGIN_WITH_FACEBOOK:'Se connecter avec Facebook',
+     LOGIN_WITH_GOOGLE:'SE CONNECTER AVEC GOOGLE',
+
 }

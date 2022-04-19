@@ -1,13 +1,14 @@
 
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity,Image } from 'react-native'
 import TextInputComponent from '../../Components/TextInputComponent/TextInputComponent';
 import strings, { changeLanguage } from '../../constants/lang';
-import Actions from '../../Redux/Actions'
+import actions from '../../Redux/actions'
 import styles from './style'
 import RNRestart from 'react-native-restart'
 import Modal from 'react-native-modal'
 import BtnComp from '../../Components/BtnComp';
+import imagePath from '../../constants/imagePath';
 
 
 const LoginScreen = () => {
@@ -61,7 +62,7 @@ const LoginScreen = () => {
     }
     else {
 
-      Actions.Login([userData])
+      actions.Login([userData])
     }
 
 
@@ -113,20 +114,15 @@ const LoginScreen = () => {
             <BtnComp title={strings.HIDE} onPress={handleModal} />
           </TouchableOpacity>
         </Modal>
+        <TouchableOpacity  activeOpacity={0.4} style={styles.fbview}>
+          <Image  style={styles.fblogo} source={imagePath.facebook_icon} />
+       <Text style={styles.fbtext}>{strings.LOGIN_WITH_FACEBOOK}</Text>
+      </TouchableOpacity>
 
-
-
-        {/* <TouchableOpacity activeOpacity={0.4}
-onPress={()=>onchangeLang('fr')}
-style={styles.btnview}>
-    <Text style={styles.loginbtn}>{strings.CHANGE_LANGUAGE}</Text>
-</TouchableOpacity>
-
-<TouchableOpacity activeOpacity={0.4}
-onPress={()=>onchangeLang('en')}
-style={styles.btnview}>
-    <Text style={styles.loginbtn}>{strings.CHANGE_LANGUAGE}</Text>
-</TouchableOpacity> */}
+      <TouchableOpacity  activeOpacity={0.4} style={styles.googleview}>
+          <Image  style={styles.googlelogo} source={imagePath.google_icon} />
+       <Text style={styles.googletext}>login with goolge</Text>
+      </TouchableOpacity>
       </View>
 
     </SafeAreaView>

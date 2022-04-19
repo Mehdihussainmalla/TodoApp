@@ -1,13 +1,13 @@
-import { Text, View, SafeAreaView, TouchableOpacity, Image, ScrollView } from 'react-native'
+import { Text, View, SafeAreaView, TouchableOpacity, Image, ScrollView, findNodeHandle, FlatList } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector, } from 'react-redux'
 import BtnComp from '../../../Components/BtnComp'
-import navigationStrings from '../../../Navigation/navigationStrings'
+import navigationStrings from '../../../navigation/navigationStrings'
 import { styles } from './style'
 import imagePath from '../../../constants/imagePath'
-import { deleteItem } from '../../../Redux/Actions/items'
-import Actions from '../../../Redux/Actions'
+import { deleteItem } from '../../../Redux/actions/items'
+import actions from '../../../Redux/actions'
 
 const HomeScreen = () => {
     const list = useSelector(data => data?.items?.list)
@@ -16,7 +16,7 @@ const HomeScreen = () => {
     const navigation = useNavigation();
     const HandleLogout = () => {
         alert('logout sucessfully finally')
-        Actions.Logout();
+        actions.Logout();
     }
 
 
@@ -25,12 +25,7 @@ const HomeScreen = () => {
 
         console.log(item.userId, "items areeeeee")
         navigation.navigate(navigationStrings.TODOSCREEN)
-
-
-
     }
-
-
 
     return (
         <SafeAreaView>

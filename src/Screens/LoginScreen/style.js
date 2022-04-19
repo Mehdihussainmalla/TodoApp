@@ -59,7 +59,56 @@ export default styles = StyleSheet.create({
     hidebtn:{ backgroundColor: colors.greyA, 
     borderWidth: 0.3,
     fontSize:20, 
-    margin: 2 }
-    ,
+    margin: 2
+ },
+ fbview:{
+     height:'5%',
+     marginHorizontal:30,
+    // width:'50%',
+     backgroundColor:colors.blue,
+     flexDirection:'row',
+     justifyContent:'space-between',
+     borderRadius:5,
+     alignSelf:'center'
+ },
+ fblogo:{
+     height: 20,
+    width: 20, 
+    alignSelf:'center',
+    marginRight: 10,
+    marginTop:3,
+    marginHorizontal:20
+},
+fbtext:{
+    fontSize:20,
+     alignSelf:'center',
+     color:'#fff',
+     marginHorizontal:15
+    },
+    googleview:{
+        margin:10,
+        height:'5%',
+     marginHorizontal:37,
+    // width:'50%',
+     backgroundColor:colors.blue,
+     flexDirection:'row',
+     justifyContent:'space-between',
+     borderRadius:5,
+     //alignSelf:'center'
 
+    },
+googlelogo:{
+        height: 20,
+       width: 20, 
+       alignSelf:'center',
+       marginRight: 10,
+       marginTop:3,
+       marginHorizontal:20
+   },
+   googletext:{
+       fontSize:20,
+        alignSelf:'center',
+        color:'#fff',
+        marginHorizontal:15
+       },
 })

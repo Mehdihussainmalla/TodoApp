@@ -6,7 +6,10 @@ export default  {
     FRENCH :'French',
     ENGLISH : 'English',
     HIDE : 'Hide',
-    URDU :'urdu'
+    URDU :'urdu',
+    LOGIN_WITH_FACEBOOK:'login with facebook',
+    LOGIN_WITH_GOOGLE:'Login with Google',
+
     
     
 }
