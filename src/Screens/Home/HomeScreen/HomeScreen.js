@@ -8,12 +8,14 @@ import { styles } from './style'
 import imagePath from '../../../constants/imagePath'
 import { deleteItem } from '../../../Redux/actions/items'
 import actions from '../../../Redux/actions'
+import WrapperContainer from '../../../Components/WrapperContainer'
 
 const HomeScreen = () => {
     const list = useSelector(data => data?.items?.list)
     //  const some = {listData}
     console.log(list, "list")
     const navigation = useNavigation();
+    
     const HandleLogout = () => {
         alert('logout sucessfully finally')
         actions.Logout();
@@ -28,6 +30,7 @@ const HomeScreen = () => {
     }
 
     return (
+        <WrapperContainer>
         <SafeAreaView>
             <ScrollView>
                 <View style={styles.homeview}>
@@ -101,6 +104,7 @@ const HomeScreen = () => {
             </ScrollView>
 
         </SafeAreaView >
+        </WrapperContainer>
     )
 }
 

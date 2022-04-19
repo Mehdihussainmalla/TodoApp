@@ -1,6 +1,6 @@
 
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity,Image } from 'react-native'
+import React, { useState ,useEffect} from 'react';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image } from 'react-native'
 import TextInputComponent from '../../Components/TextInputComponent/TextInputComponent';
 import strings, { changeLanguage } from '../../constants/lang';
 import actions from '../../Redux/actions'
@@ -9,6 +9,11 @@ import RNRestart from 'react-native-restart'
 import Modal from 'react-native-modal'
 import BtnComp from '../../Components/BtnComp';
 import imagePath from '../../constants/imagePath';
+import { LoginManager, GraphRequest, GraphRequestManager } from "react-native-fbsdk";
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
+import WrapperContainer from '../../Components/WrapperContainer';
+import { loginGoogle } from '../../Redux/actions/auth';
+
 
 
 const LoginScreen = () => {
@@ -20,11 +25,84 @@ const LoginScreen = () => {
 
   const [password, setPassword] = useState('');
 
-  const [isModalvisible, setModalVisible] = useState();
+  const [isModalvisible, setModalVisible] = useState(false);
 
   const handleModal = () => setModalVisible(() => !isModalvisible);
 
+  useEffect(()=>{
+    GoogleSignin.configure();
+  },[])
+  const googleLogin = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+     console.log('user info', userInfo)
+     const email=userInfo.user.email;
+     const id=userInfo.user.id;
+     const data={email,id}
+     loginGoogle(data);
 
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+        console.log('errorr occurred during google sign in',error)
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+        console.log('errorr occurred during google sign in',error)
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+        console.log('errorr occurred during google sign in',error)
+      } else {
+        // some other error happened
+        console.log('errorr occurred during google sign in',error)
+      }
+    }
+  };
+
+  
+
+
+  const fbLogin = (resCallBack) => {
+    LoginManager.logOut();
+    return LoginManager.logInWithPermissions(['email', 'public_profile']).then(
+        result => {
+            console.log("FB_LOGIN_RESULT =====>", result);
+            if (result.declinedPermissions && result.declinedPermissions.includes('email')) {
+                resCallBack({ message: "email is required" })
+            }
+            if (result.isCancelled) {
+                console.log("error")
+            } else {
+                const infoResquest = new GraphRequest(
+                    '/me?fields = email, name, picture',
+                    null,
+                    resCallBack
+                );
+                new GraphRequestManager().addRequest(infoResquest).start()
+            }
+        },
+        function (error) {
+            console.log("login failed with error", error)
+        }
+    )
+}
+
+const onFbLogin = async () => {
+    try {
+        await fbLogin(resInfoCallBack)
+    } catch (error) {
+        console.log("error", error)
+    }
+}
+
+const resInfoCallBack = async (error, result) => {
+    if (error) {
+        console.log("Login Error", error)
+    } else {
+        const userData = result;
+        console.log(userData)
+    }
+}
   const userData = {
     email: email,
     password: password
@@ -69,7 +147,7 @@ const LoginScreen = () => {
   }
 
   return (
-    <SafeAreaView>
+    <WrapperContainer>
       <View style={styles.loginview}>
 
         <TextInputComponent onChangeText={event => setemail(event)}
@@ -83,12 +161,23 @@ const LoginScreen = () => {
           <Text style={styles.loginbtn}>{strings.LOGIN}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleModal}
+
+        <TouchableOpacity onPress={onFbLogin}
+          activeOpacity={0.4} style={styles.fbview}>
+          <Image style={styles.fblogo} source={imagePath.facebook_icon} />
+          <Text style={styles.fbtext}>Login with facebook</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={googleLogin}  activeOpacity={0.4} style={styles.googleview}>
+          <Image  style={styles.googlelogo} source={imagePath.google_icon} />
+       <Text style={styles.googletext}>{strings.LOGIN_WITH_GOOGLE}</Text>
+      </TouchableOpacity>
+
+        {/* <TouchableOpacity onPress={handleModal}
           style={styles.btnview}>
           <Text style={styles.loginbtn}>Change Language</Text>
-
-
         </TouchableOpacity>
+
         <Modal isVisible={isModalvisible}>
 
           <TouchableOpacity onPress={() => onchangeLang('fr')}>
@@ -114,18 +203,18 @@ const LoginScreen = () => {
             <BtnComp title={strings.HIDE} onPress={handleModal} />
           </TouchableOpacity>
         </Modal>
-        <TouchableOpacity  activeOpacity={0.4} style={styles.fbview}>
-          <Image  style={styles.fblogo} source={imagePath.facebook_icon} />
-       <Text style={styles.fbtext}>{strings.LOGIN_WITH_FACEBOOK}</Text>
-      </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.4} style={styles.fbview}>
+          <Image style={styles.fblogo} source={imagePath.facebook_icon} />
+          <Text style={styles.fbtext}>{strings.LOGIN_WITH_FACEBOOK}</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity  activeOpacity={0.4} style={styles.googleview}>
+        <TouchableOpacity  activeOpacity={0.4} style={styles.googleview}>
           <Image  style={styles.googlelogo} source={imagePath.google_icon} />
-       <Text style={styles.googletext}>login with goolge</Text>
-      </TouchableOpacity>
+       <Text style={styles.googletext}>{strings.LOGIN_WITH_GOOGLE}</Text>
+      </TouchableOpacity> */}
       </View>
 
-    </SafeAreaView>
+      </WrapperContainer>
   )
 }
 

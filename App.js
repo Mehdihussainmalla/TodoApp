@@ -21,8 +21,8 @@ const App = () => {
     getLanguage();
 
     getLogin().then((res)=>{
-      // console.log("get login",res)
-      Actions.Login(res)
+      console.log("get login",res)
+      actions.Login(res)
     })
 
 

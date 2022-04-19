@@ -9,7 +9,7 @@ export default styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         padding: 16,
-        backgroundColor: 'lightgrey'
+        backgroundColor:colors.white
     },
     btnview: {
         backgroundColor: 'blue',
@@ -17,14 +17,15 @@ export default styles = StyleSheet.create({
         // marginHorizontal:35,
         justifyContent: 'center',
         alignContent: 'center',
-        marginVertical: 15,
+        marginVertical: 10,
         marginLeft: 45,
-        width: '65%'
+        width: '65%',
+        
     },
     loginbtn: {
         fontSize: 22,
         margin: 5,
-        color: '#fff',
+        color:colors.white,
         //fontWeight: '500',
         fontFamily:fontFamily.mulishRegular,
         
@@ -61,15 +62,19 @@ export default styles = StyleSheet.create({
     fontSize:20, 
     margin: 2
  },
+
+ 
  fbview:{
+     margin:5,
      height:'5%',
-     marginHorizontal:30,
-    // width:'50%',
+     marginHorizontal:18,
+     width:'65%',
      backgroundColor:colors.blue,
      flexDirection:'row',
-     justifyContent:'space-between',
+    // justifyContent:'space-between',
      borderRadius:5,
-     alignSelf:'center'
+     alignSelf:'center',
+    marginRight:50
  },
  fblogo:{
      height: 20,
@@ -77,38 +82,40 @@ export default styles = StyleSheet.create({
     alignSelf:'center',
     marginRight: 10,
     marginTop:3,
-    marginHorizontal:20
+   marginHorizontal:8
 },
 fbtext:{
-    fontSize:20,
+    fontSize:15,
      alignSelf:'center',
-     color:'#fff',
-     marginHorizontal:15
+     color:colors.white,
+    // marginHorizontal:15
     },
     googleview:{
-        margin:10,
+        margin:15,
         height:'5%',
-     marginHorizontal:37,
-    // width:'50%',
+     marginHorizontal:18,
+     width:'65%',
      backgroundColor:colors.blue,
      flexDirection:'row',
-     justifyContent:'space-between',
+     //justifyContent:'space-between',
      borderRadius:5,
-     //alignSelf:'center'
+     alignSelf:'center',
+    marginRight:50
 
     },
 googlelogo:{
         height: 20,
        width: 20, 
        alignSelf:'center',
-       marginRight: 10,
+     marginRight: 10,
        marginTop:3,
-       marginHorizontal:20
+       marginHorizontal:10
    },
    googletext:{
-       fontSize:20,
+       alignSelf:'center',
+       fontSize:15,
         alignSelf:'center',
-        color:'#fff',
+        color:colors.white,
         marginHorizontal:15
        },
 })

@@ -21,8 +21,7 @@ const userStatus = (state = initialState, action) => {
 
             };
         case types.LOGOUT:
-            // removeData()
-            removeData().then((res) => {
+            removeData() .then((res) => {
                 console.log('user status', res)
                 return { ...state.userData, userData: res }
                 }

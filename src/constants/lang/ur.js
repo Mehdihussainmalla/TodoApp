@@ -9,7 +9,6 @@ export default {
     HIDE :'چھپائیں',
     URDU :'اردو',
     LOGIN_WITH_FACEBOOK:'فیس بک لاگ ان کریں',
-    LOGIN_WITH_GOOGLE:' GOOGLE کے ساتھ لاگ ان کریں۔'
-
+    LOGIN_WITH_GOOGLE:' گوگل کے ساتھ لاگ ان کریں۔'
 
 }

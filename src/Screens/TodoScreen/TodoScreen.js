@@ -5,6 +5,7 @@ import navigationStrings from '../../navigation/navigationStrings';
 import TextInputComponent from '../../Components/TextInputComponent/TextInputComponent';
 import { styles } from './style';
 import { storeData } from '../../utils/utils';
+import WrapperContainer from '../../Components/WrapperContainer';
 
 
 
@@ -98,7 +99,7 @@ const TodoScreen = ({ navigation,route}) => {
 
 
 
-        <SafeAreaView >
+        <WrapperContainer>
             <View style={styles.container}>
 
                 <View style={styles.heading}>
@@ -136,7 +137,7 @@ const TodoScreen = ({ navigation,route}) => {
                 </View>
             </View>
 
-        </SafeAreaView>
+            </WrapperContainer>
 
     )
 }
