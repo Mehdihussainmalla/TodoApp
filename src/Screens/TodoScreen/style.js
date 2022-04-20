@@ -44,6 +44,10 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: '400'
     },
+    btnviews:{ 
+        flexDirection: 'row', 
+    justifyContent: 'space-between' 
+}
     });
 
 

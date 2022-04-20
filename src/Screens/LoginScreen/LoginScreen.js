@@ -12,7 +12,7 @@ import imagePath from '../../constants/imagePath';
 import { LoginManager, GraphRequest, GraphRequestManager } from "react-native-fbsdk";
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import WrapperContainer from '../../Components/WrapperContainer';
-import { loginGoogle } from '../../Redux/actions/auth';
+import { Login} from '../../Redux/actions/auth';
 
 
 
@@ -32,6 +32,8 @@ const LoginScreen = () => {
   useEffect(()=>{
     GoogleSignin.configure();
   },[])
+
+  //.............google login in ......................//
   const googleLogin = async () => {
     try {
       await GoogleSignin.hasPlayServices();
@@ -40,7 +42,7 @@ const LoginScreen = () => {
      const email=userInfo.user.email;
      const id=userInfo.user.id;
      const data={email,id}
-     loginGoogle(data);
+     Login(data);
 
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -58,8 +60,9 @@ const LoginScreen = () => {
       }
     }
   };
-
   
+
+  //................fb login .........................//
 
 
   const fbLogin = (resCallBack) => {
@@ -101,6 +104,8 @@ const resInfoCallBack = async (error, result) => {
     } else {
         const userData = result;
         console.log(userData)
+        Login(userData);
+        
     }
 }
   const userData = {
@@ -146,6 +151,9 @@ const resInfoCallBack = async (error, result) => {
 
   }
 
+
+  
+
   return (
     <WrapperContainer>
       <View style={styles.loginview}>
@@ -161,11 +169,16 @@ const resInfoCallBack = async (error, result) => {
           <Text style={styles.loginbtn}>{strings.LOGIN}</Text>
         </TouchableOpacity>
 
+        <TouchableOpacity onPress={handleModal}
+          style={styles.btnview}>
+          <Text style={styles.loginbtn}>{strings.CHANGE_LANGUAGE}</Text>
+        </TouchableOpacity>
+
 
         <TouchableOpacity onPress={onFbLogin}
           activeOpacity={0.4} style={styles.fbview}>
           <Image style={styles.fblogo} source={imagePath.facebook_icon} />
-          <Text style={styles.fbtext}>Login with facebook</Text>
+          <Text style={styles.fbtext}>{strings.LOGIN_WITH_FACEBOOK}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={googleLogin}  activeOpacity={0.4} style={styles.googleview}>
@@ -173,45 +186,31 @@ const resInfoCallBack = async (error, result) => {
        <Text style={styles.googletext}>{strings.LOGIN_WITH_GOOGLE}</Text>
       </TouchableOpacity>
 
-        {/* <TouchableOpacity onPress={handleModal}
-          style={styles.btnview}>
-          <Text style={styles.loginbtn}>Change Language</Text>
-        </TouchableOpacity>
+      <Modal isVisible={isModalvisible}>
 
-        <Modal isVisible={isModalvisible}>
-
-          <TouchableOpacity onPress={() => onchangeLang('fr')}>
-            <View style={styles.frenchlang}>
-              <Text style={styles.frenchtext}>{strings.FRENCH}</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => onchangeLang('en')}>
-            <View style={styles.englishlang}>
-              <Text style={styles.englishtext}>{strings.ENGLISH}</Text>
-            </View>
-          </TouchableOpacity>
+<TouchableOpacity onPress={() => onchangeLang('fr')}>
+  <View style={styles.frenchlang}>
+    <Text style={styles.frenchtext}>{strings.FRENCH}</Text>
+  </View>
+</TouchableOpacity>
+<TouchableOpacity onPress={() => onchangeLang('en')}>
+  <View style={styles.englishlang}>
+    <Text style={styles.englishtext}>{strings.ENGLISH}</Text>
+  </View>
+</TouchableOpacity>
 
 
-          <TouchableOpacity onPress={() => onchangeLang('ur')}>
-            <View style={styles.englishlang}>
-              <Text style={styles.englishtext}>{strings.URDU}</Text>
-            </View>
-          </TouchableOpacity>
+<TouchableOpacity onPress={() => onchangeLang('ur')}>
+  <View style={styles.englishlang}>
+    <Text style={styles.englishtext}>{strings.URDU}</Text>
+  </View>
+</TouchableOpacity>
 
 
-          <TouchableOpacity style={styles.hidebtn}>
-            <BtnComp title={strings.HIDE} onPress={handleModal} />
-          </TouchableOpacity>
-        </Modal>
-        <TouchableOpacity activeOpacity={0.4} style={styles.fbview}>
-          <Image style={styles.fblogo} source={imagePath.facebook_icon} />
-          <Text style={styles.fbtext}>{strings.LOGIN_WITH_FACEBOOK}</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity  activeOpacity={0.4} style={styles.googleview}>
-          <Image  style={styles.googlelogo} source={imagePath.google_icon} />
-       <Text style={styles.googletext}>{strings.LOGIN_WITH_GOOGLE}</Text>
-      </TouchableOpacity> */}
+<TouchableOpacity style={styles.hidebtn}>
+  <BtnComp title={strings.HIDE} onPress={handleModal} />
+</TouchableOpacity>
+</Modal>
       </View>
 
       </WrapperContainer>

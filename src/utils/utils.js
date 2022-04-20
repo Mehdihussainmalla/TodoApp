@@ -38,6 +38,8 @@ export async function getLogin() {
         console.log("user_data get error")
       }
 }
+
+
    export const removeData = async()=>{
     try {
         await AsyncStorage.removeItem('userData')

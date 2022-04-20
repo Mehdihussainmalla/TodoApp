@@ -21,12 +21,5 @@ export const Logout = () => {
         
     });
 }
-export const loginGoogle = ( data) =>{
-    console.log('loginData in actions', data)
-    dispatch({
-        type: types.LOGIN,
-        payload: data,
-        
-    });
-    
-}
+
+

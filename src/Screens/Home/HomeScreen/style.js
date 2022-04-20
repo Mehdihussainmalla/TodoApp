@@ -92,11 +92,22 @@ export const styles = StyleSheet.create({
                 width:100
 
     },
+    emaildata:{
+        alignContent:'center',
+        margin:8,
+        justifyContent:'center',
+        backgroundColor:colors.greyA
+    },
     
     iconview: {
         justifyContent: 'space-between',
         flexDirection: 'row', margin: 5
-    }
+    },
+    emailtext:{
+        fontSize:20,
+        alignSelf:'center',
+    color:colors.blue
+},
 
 
 })

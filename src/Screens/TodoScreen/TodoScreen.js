@@ -6,6 +6,7 @@ import TextInputComponent from '../../Components/TextInputComponent/TextInputCom
 import { styles } from './style';
 import { storeData } from '../../utils/utils';
 import WrapperContainer from '../../Components/WrapperContainer';
+import strings from '../../constants/lang';
 
 
 
@@ -109,16 +110,17 @@ const TodoScreen = ({ navigation,route}) => {
 
 
                 <TextInputComponent onChangeText={event => setName(event)}
-                    placeholder='Enter Name' />
+                    placeholder={strings.ENTER_NAME}/>
                 <TextInputComponent onChangeText={event => setAge(event)}
-                    placeholder='Enter Age' />
+                    placeholder={strings.ENTER_AGE} />
                 <TextInputComponent onChangeText={event => setRollno(event)}
-                    placeholder='Enter Roll No' />
+                    placeholder={strings.ENTER_ROLL_NUMBER} />
                 <TextInputComponent onChangeText={event => setAdress(event)}
-                    placeholder='Enter Address' />
+                    placeholder={strings.ENTER_ADDRESS} />
                 <TextInputComponent onChangeText={event => setPhoneNumber(event)}
-                    placeholder='Enter Phone Number' />
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    placeholder={strings.ENTER_PHONE_NUMBER} />
+                    
+                <View style={styles.btnviews}>
                    
                    
                     <TouchableOpacity activeOpacity={0.7}
@@ -126,7 +128,7 @@ const TodoScreen = ({ navigation,route}) => {
 
                         <View style={styles.addtaskview}>
 
-                            <Text style={styles.addtaskbutton}>Submit</Text>
+                            <Text style={styles.addtaskbutton}>{strings.SUBMIT}</Text>
 
                         </View>
                     </TouchableOpacity>

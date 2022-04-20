@@ -9,7 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import strings from './src/constants/lang';
 import store from './src/Redux/store';
 import actions from './src/Redux/actions'
-
+import {requestUserPermission,notificationListener} from './src/utils/notificationServices'
 
 
 
@@ -18,6 +18,8 @@ const App = () => {
 
   
   useEffect(() => {
+    requestUserPermission();
+    notificationListener();
     getLanguage();
 
     getLogin().then((res)=>{
