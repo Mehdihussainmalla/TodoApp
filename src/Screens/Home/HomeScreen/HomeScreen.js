@@ -12,7 +12,6 @@ import WrapperContainer from '../../../Components/WrapperContainer'
 import { Logout, logoutGoogle } from '../../../Redux/actions/auth'
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import strings from '../../../constants/lang'
-import colors from '../../../styles/colors'
 
 
 

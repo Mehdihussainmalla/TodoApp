@@ -94,6 +94,7 @@ const LoginScreen = () => {
   const onFbLogin = async () => {
     try {
       await fbLogin(resInfoCallBack)
+    
     } catch (error) {
       console.log("error", error)
     }
