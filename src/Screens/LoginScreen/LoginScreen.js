@@ -1,5 +1,5 @@
 
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Image } from 'react-native'
 import TextInputComponent from '../../Components/TextInputComponent/TextInputComponent';
 import strings, { changeLanguage } from '../../constants/lang';
@@ -12,7 +12,7 @@ import imagePath from '../../constants/imagePath';
 import { LoginManager, GraphRequest, GraphRequestManager } from "react-native-fbsdk";
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import WrapperContainer from '../../Components/WrapperContainer';
-import { Login} from '../../Redux/actions/auth';
+import { Login } from '../../Redux/actions/auth';
 
 
 
@@ -24,43 +24,44 @@ const LoginScreen = () => {
 
 
   const [password, setPassword] = useState('');
+  
 
   const [isModalvisible, setModalVisible] = useState(false);
 
   const handleModal = () => setModalVisible(() => !isModalvisible);
 
-  useEffect(()=>{
+  useEffect(() => {
     GoogleSignin.configure();
-  },[])
+  }, [])
 
   //.............google login in ......................//
   const googleLogin = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-     console.log('user info', userInfo)
-     const email=userInfo.user.email;
-     const id=userInfo.user.id;
-     const data={email,id}
-     Login(data);
+      console.log('user info', userInfo)
+      const email = userInfo.user.email;
+      const id = userInfo.user.id;
+      const data = { email, id }
+      Login(data);
 
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
-        console.log('errorr occurred during google sign in',error)
+        console.log('errorr occurred during google sign in', error)
       } else if (error.code === statusCodes.IN_PROGRESS) {
         // operation (e.g. sign in) is in progress already
-        console.log('errorr occurred during google sign in',error)
+        console.log('errorr occurred during google sign in', error)
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         // play services not available or outdated
-        console.log('errorr occurred during google sign in',error)
+        console.log('errorr occurred during google sign in', error)
       } else {
         // some other error happened
-        console.log('errorr occurred during google sign in',error)
+        console.log('errorr occurred during google sign in', error)
       }
     }
   };
-  
+
 
   //................fb login .........................//
 
@@ -68,46 +69,46 @@ const LoginScreen = () => {
   const fbLogin = (resCallBack) => {
     LoginManager.logOut();
     return LoginManager.logInWithPermissions(['email', 'public_profile']).then(
-        result => {
-            console.log("FB_LOGIN_RESULT =====>", result);
-            if (result.declinedPermissions && result.declinedPermissions.includes('email')) {
-                resCallBack({ message: "email is required" })
-            }
-            if (result.isCancelled) {
-                console.log("error")
-            } else {
-                const infoResquest = new GraphRequest(
-                    '/me?fields = email, name, picture',
-                    null,
-                    resCallBack
-                );
-                new GraphRequestManager().addRequest(infoResquest).start()
-            }
-        },
-        function (error) {
-            console.log("login failed with error", error)
+      result => {
+        console.log("FB_LOGIN_RESULT =====>", result);
+        if (result.declinedPermissions && result.declinedPermissions.includes('email')) {
+          resCallBack({ message: "email is required" })
         }
+        if (result.isCancelled) {
+          console.log("error")
+        } else {
+          const infoResquest = new GraphRequest(
+            '/me?fields = email, name, picture',
+            null,
+            resCallBack
+          );
+          new GraphRequestManager().addRequest(infoResquest).start()
+        }
+      },
+      function (error) {
+        console.log("login failed with error", error)
+      }
     )
-}
+  }
 
-const onFbLogin = async () => {
+  const onFbLogin = async () => {
     try {
-        await fbLogin(resInfoCallBack)
+      await fbLogin(resInfoCallBack)
     } catch (error) {
-        console.log("error", error)
+      console.log("error", error)
     }
-}
+  }
 
-const resInfoCallBack = async (error, result) => {
+  const resInfoCallBack = async (error, result) => {
     if (error) {
-        console.log("Login Error", error)
+      console.log("Login Error", error)
     } else {
-        const userData = result;
-        console.log(userData)
-        Login(userData);
-        
+      const userData = result;
+      console.log(userData)
+      Login(userData);
+
     }
-}
+  }
   const userData = {
     email: email,
     password: password
@@ -152,7 +153,7 @@ const resInfoCallBack = async (error, result) => {
   }
 
 
-  
+
 
   return (
     <WrapperContainer>
@@ -181,39 +182,39 @@ const resInfoCallBack = async (error, result) => {
           <Text style={styles.fbtext}>{strings.LOGIN_WITH_FACEBOOK}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={googleLogin}  activeOpacity={0.4} style={styles.googleview}>
-          <Image  style={styles.googlelogo} source={imagePath.google_icon} />
-       <Text style={styles.googletext}>{strings.LOGIN_WITH_GOOGLE}</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={googleLogin} activeOpacity={0.4} style={styles.googleview}>
+          <Image style={styles.googlelogo} source={imagePath.google_icon} />
+          <Text style={styles.googletext}>{strings.LOGIN_WITH_GOOGLE}</Text>
+        </TouchableOpacity>
 
-      <Modal isVisible={isModalvisible}>
+        <Modal isVisible={isModalvisible}>
 
-<TouchableOpacity onPress={() => onchangeLang('fr')}>
-  <View style={styles.frenchlang}>
-    <Text style={styles.frenchtext}>{strings.FRENCH}</Text>
-  </View>
-</TouchableOpacity>
-<TouchableOpacity onPress={() => onchangeLang('en')}>
-  <View style={styles.englishlang}>
-    <Text style={styles.englishtext}>{strings.ENGLISH}</Text>
-  </View>
-</TouchableOpacity>
-
-
-<TouchableOpacity onPress={() => onchangeLang('ur')}>
-  <View style={styles.englishlang}>
-    <Text style={styles.englishtext}>{strings.URDU}</Text>
-  </View>
-</TouchableOpacity>
+          <TouchableOpacity onPress={() => onchangeLang('fr')}>
+            <View style={styles.frenchlang}>
+              <Text style={styles.frenchtext}>{strings.FRENCH}</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => onchangeLang('en')}>
+            <View style={styles.englishlang}>
+              <Text style={styles.englishtext}>{strings.ENGLISH}</Text>
+            </View>
+          </TouchableOpacity>
 
 
-<TouchableOpacity style={styles.hidebtn}>
-  <BtnComp title={strings.HIDE} onPress={handleModal} />
-</TouchableOpacity>
-</Modal>
+          <TouchableOpacity onPress={() => onchangeLang('ur')}>
+            <View style={styles.englishlang}>
+              <Text style={styles.englishtext}>{strings.URDU}</Text>
+            </View>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity style={styles.hidebtn}>
+            <BtnComp title={strings.HIDE} onPress={handleModal} />
+          </TouchableOpacity>
+        </Modal>
       </View>
 
-      </WrapperContainer>
+    </WrapperContainer>
   )
 }
 

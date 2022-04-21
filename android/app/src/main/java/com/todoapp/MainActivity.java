@@ -3,6 +3,16 @@ import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import android.os.Bundle;
+import android.os.Build;
+import android.content.ContentResolver;
+import android.net.Uri ;
+import android.app.NotificationChannel;
+import android.media.AudioAttributes;
+import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactActivityDelegate;
+import com.facebook.react.ReactRootView;
+import androidx.core.app.NotificationCompat;
+import android.app.NotificationManager;
 
 public class MainActivity extends ReactActivity {
 
@@ -41,20 +51,20 @@ public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-      NotificationChannel notificationChannel= new NotificationChannel("notification_bell", "TodoApp", NotificationManager.IMPORTANCE_HIGH);
+      NotificationChannel notificationChannel = new NotificationChannel("notification_bell", "TodoApp", NotificationManager.IMPORTANCE_HIGH);
       notificationChannel.setShowBadge(true);
       notificationChannel.setDescription("");
       AudioAttributes att = new AudioAttributes.Builder()
               .setUsage(AudioAttributes.USAGE_NOTIFICATION)
               .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
               .build();
-      NotificationChannel.setSound(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + getPackageName() + "/raw/notification_ring"), att);
+      notificationChannel.setSound(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + getPackageName() + "/raw/{ENTER SOUND NAME HERE WITHOUT EXTENSION}"), att);
       notificationChannel.enableVibration(true);
       notificationChannel.setVibrationPattern(new long[]{400, 400});
       notificationChannel.setLockscreenVisibility(NotificationCompat.VISIBILITY_PUBLIC);
       NotificationManager manager = getSystemService(NotificationManager.class);
       manager.createNotificationChannel(notificationChannel);
-  }
+    }
     super.onCreate(savedInstanceState);
   }
 }
