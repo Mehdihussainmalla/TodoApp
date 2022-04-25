@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 import Routes from './src/navigation/Routes'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import types from './src/Redux/types';
 import { getData, getLogin } from './src/utils/utils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import strings from './src/constants/lang';
