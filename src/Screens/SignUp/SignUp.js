@@ -1,4 +1,3 @@
-//import liraries
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import TextInputComponent from '../../Components/TextInputComponent/TextInputComponent';
@@ -8,9 +7,8 @@ import styles from './styles';
 import actions from '../../Redux/actions';
 import { useSelector } from 'react-redux';
 
-// create a component
-const MyComponent = () => {
-    const userData = useSelector(state => state.auth.userData)
+const SignUp = () => {
+    const userData = useSelector(state => state?. auth?.userData)
     console.log("user Data", userData)
 
     const [firstName, setFirstName] = useState('');
@@ -76,4 +74,4 @@ const MyComponent = () => {
         </WrapperContainer>
     );
 };
-export default MyComponent;
+export default SignUp;

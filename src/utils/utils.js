@@ -102,8 +102,7 @@ console.log("api hit",endPoint)
 				if (error && error.response && error.response.status === 401) {
 					clearUserData();
 					clearLoginUser();	
-					// NavigationService.resetNavigation();
-					//NavigationService.navigate('loginUsingEmailScreen');
+					
 					dispatch({
 						type: types.CLEAR_REDUX_STATE,
 						payload: {}
