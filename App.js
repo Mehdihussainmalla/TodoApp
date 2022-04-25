@@ -7,8 +7,8 @@ import { getData, getLogin } from './src/utils/utils';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import strings from './src/constants/lang';
 import store from './src/Redux/store';
-import actions from './src/Redux/actions'
 import {requestUserPermission,notificationListener} from './src/utils/notificationServices'
+import actions from './src/Redux/actions';
 
 
 
@@ -23,7 +23,7 @@ const App = () => {
 
     getLogin().then((res)=>{
       console.log("get login",res)
-      actions.Login(res)
+      actions.saveUserData(res)
     })
 
 

@@ -28,9 +28,16 @@ const userStatus = (state = initialState, action) => {
             )
             return { ...state.userData, userData: undefined }
 
+            case types.NO_INTERNET: {
+                const internetConnection = action.payload.internetConnection
+                return { ...state, internetConnection }
+            }
+
         default:
             return { ...state };
     }
 }
+
+
 
 export default userStatus

@@ -118,4 +118,16 @@ googlelogo:{
         color:colors.white,
         marginHorizontal:15
        },
+
+       signupview:{
+           justifyContent:'center',
+           //alignContent:'center',
+           alignItems:'center',
+           height:30,
+           margin:20
+       },
+       signuptext:{
+           color:'red',
+           fontSize:20
+       }
 })

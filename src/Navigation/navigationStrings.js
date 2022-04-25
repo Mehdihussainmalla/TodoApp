@@ -3,5 +3,6 @@ export default {
     HOMESCREEN: 'HOMESCREEN',
     TODOSCREEN: 'TODOSCREEN',
     HOMESTACK: 'HOMESTACK',
+    SIGN_UP:'SIGN UP'
  
 };

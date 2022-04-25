@@ -25,6 +25,19 @@ export default  {
     ENTER_ROLL_NUMBER:'enter roll number',
     ENTER_PHONE_NUMBER:'enter phone number',
     SUBMIT :'submit',
+    SIGN_UP :'Sign up',
+    CONFIRM_PASSWORD:'Confirm password',
+    FIRST_NAME:`first_name`,
+    LAST_NAME: 'last_name',
+    EMAIL:'email',
+    PHONE :'phone ',
+    PHONE_CODE :'phone_code',
+    COUNTRY_CODE:'country_code',
+    DEVICE_TOKEN:'device_token',
+    DEVICE_TYPE:'device_type',
+    PASSWORD:'password'
+
+
     
     
 

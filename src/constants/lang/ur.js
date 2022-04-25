@@ -26,7 +26,8 @@ export default {
     ENTER_ADDRESS:'پتہ درج کریں',
     ENTER_ROLL_NUMBER:'رول نمبر درج کریں۔',
     ENTER_PHONE_NUMBER:'فون نمبر درج کریں',
-    SUBMIT:'جمع کرائیں'
-    
+    SUBMIT:'جمع کرائیں',
+    SIGN_UP:'سائن اپ',
+    CONFIRM_PASSWORD:'پاس ورڈ کی تصدیق کریں'
 
 }

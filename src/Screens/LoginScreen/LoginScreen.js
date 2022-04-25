@@ -12,11 +12,12 @@ import imagePath from '../../constants/imagePath';
 import { LoginManager, GraphRequest, GraphRequestManager } from "react-native-fbsdk";
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import WrapperContainer from '../../Components/WrapperContainer';
-import { Login } from '../../Redux/actions/auth';
+import { Login, saveUserData } from '../../Redux/actions/auth';
+import navigationStrings from '../../navigation/navigationStrings';
 
 
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const emailRegex = /^[\w-\.\_\$]{2,}@([\w]{3,5}\.)[\w]{2,4}$/;
   const passWrdRegz = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
@@ -43,7 +44,7 @@ const LoginScreen = () => {
       const email = userInfo.user.email;
       const id = userInfo.user.id;
       const data = { email, id }
-      Login(data);
+      saveUserData(data);
 
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -106,7 +107,7 @@ const LoginScreen = () => {
     } else {
       const userData = result;
       console.log(userData)
-      Login(userData);
+      saveUserData(userData);
 
     }
   }
@@ -147,7 +148,7 @@ const LoginScreen = () => {
     }
     else {
 
-      actions.Login([userData])
+      actions.saveUserData([userData])
     }
 
 
@@ -213,7 +214,12 @@ const LoginScreen = () => {
             <BtnComp title={strings.HIDE} onPress={handleModal} />
           </TouchableOpacity>
         </Modal>
+        <TouchableOpacity onPress={()=>navigation.navigate(navigationStrings.SIGN_UP)} activeOpacity={0.5} style={styles.signupview}>
+        <Text style={styles.signuptext}>signup</Text>
+      </TouchableOpacity>
       </View>
+    
+        
 
     </WrapperContainer>
   )

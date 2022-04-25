@@ -16,8 +16,6 @@ export default {
      ROLL_NUMBER :'numéro de rôle',
      ADDRESS:'adresse',
      PHONE_NUMBER:'numéro de téléphone',
-     ADD_TASK:'Ajouter une tâche',
-     ADD_MORE:'ajouter plus',
 
      ADD_TASK:'Ajouter une tâche',
      ADD_MORE:'ajouter plus',
@@ -27,6 +25,9 @@ export default {
      ENTER_ADDRESS:`entrer l'adresse`,
      ENTER_ROLL_NUMBER:'esaisir le numéro de matricule',
      ENTER_PHONE_NUMBER:'entrez le numéro de téléphone',
-     SUBMIT :'NOUS FAIRE PARVENIR'
+     SUBMIT :'NOUS FAIRE PARVENIR',
+     SIGN_UP:`S'inscrire`,
+     ENTER_USER_NAME:`Saisissez votre nom d'utilisateur`,
+     CONFIRM_PASSWORD:'Confirmez le mot de passe'
 
 }

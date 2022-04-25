@@ -9,7 +9,7 @@ const TextInputComponent = ({
 }) => {
     
   return (
-      <SafeAreaView style={{marginTop:20}}>
+      <SafeAreaView style={{marginTop:10}}>
            <TextInput onChangeText={onChangeText} placeholder={placeholder}
         //    keyboardType={keyboardType}
 
@@ -28,10 +28,10 @@ const styles = StyleSheet.create({
 input:{
     borderRadius: 10,
     height: 35,
-    width: '80%',
+    width: '100%',
    // backgroundColor: 'lightgrey',
     borderWidth: 0.5,
-    marginHorizontal:27,
+    //marginHorizontal:27,
     marginVertical:5,
     padding: moderateVerticalScale(8),
    
