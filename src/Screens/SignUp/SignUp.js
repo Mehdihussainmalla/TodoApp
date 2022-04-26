@@ -5,11 +5,11 @@ import WrapperContainer from '../../Components/WrapperContainer';
 import strings from '../../constants/lang';
 import styles from './styles';
 import actions from '../../Redux/actions';
-import { useSelector } from 'react-redux';
+import navigationStrings from '../../navigation/navigationStrings'
 
-const SignUp = () => {
-    // const userData = useSelector(state => state?.auth?.userData)
-    // console.log("user Data", userData)
+
+const SignUp = ({navigation}) => {
+   
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -21,7 +21,7 @@ const SignUp = () => {
     const [deviceType, setDeviceType] = useState('');
     const [password, setPassword] = useState('');
 
-    const onSignup = async () => {
+    const onSignup = async() => {
 
         let apiData = {
             first_name: firstName,
@@ -34,10 +34,11 @@ const SignUp = () => {
             device_type: Platform.OS == 'ios' ? 'IOS' : 'ANDROID',
             password: password
         }
-        // console.log(apiData)
+         console.log(apiData)
         try {
             const res = await actions.signUp(apiData)
             console.log("signup api is......", res)
+            navigation.navigate(navigationStrings.LOGINSCREEN)
             alert("User signup sucessfully !")
         } catch (error) {
             console.log("error raised", error)

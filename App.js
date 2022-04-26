@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View ,SafeAreaView } from 'react-native'
 import React, { useEffect } from 'react'
-import Routes from './src/navigation/Routes'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { getData, getLogin } from './src/utils/utils';
@@ -9,6 +8,7 @@ import strings from './src/constants/lang';
 import store from './src/Redux/store';
 import {requestUserPermission,notificationListener} from './src/utils/notificationServices'
 import actions from './src/Redux/actions';
+import Routes from './src/navigation/Routes';
 
 
 
@@ -58,7 +58,7 @@ const App = () => {
     <Provider store={store} >
      
    <SafeAreaProvider>
-       <Routes/>
+     <Routes />
    </SafeAreaProvider>
      
     </Provider>

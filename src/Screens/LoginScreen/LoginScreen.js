@@ -130,13 +130,13 @@ const LoginScreen = ({ navigation }) => {
 
   }
 
-  const onLogin = () => {
+  const onLogin = async() => {
     let apiData = {
       phone: phone,
-      deviceToken: deviceToken,
+      deviceToken:'abc',
       password: password,
-      deviceType: deviceType,
-      phoneCode: phoneCode,
+      deviceType: 'ANDROID',
+      phoneCode: '91',
 
     }
     try {
@@ -192,21 +192,21 @@ const LoginScreen = ({ navigation }) => {
         <TextInputComponent onChangeText={event => setPhone(event)}
           placeholder={strings.PHONE}
         />
-        <TextInputComponent onChangeText={event => setDeviceToken(event)}
+        {/* <TextInputComponent onChangeText={event => setDeviceToken(event)}
           placeholder={strings.DEVICE_TOKEN}
-        />
+        /> */}
         <TextInputComponent onChangeText={event => setPassword(event)}
           placeholder={strings.PASSWORD}
         />
-        <TextInputComponent onChangeText={event => setDeviceType(event)}
+        {/* <TextInputComponent onChangeText={event => setDeviceType(event)}
           placeholder={strings.DEVICE_TYPE}
-        />
-        <TextInputComponent onChangeText={event => setPhoneCode(event)}
+        /> */}
+        {/* <TextInputComponent onChangeText={event => setPhoneCode(event)}
           placeholder={strings.PHONE_CODE}
-        />
+        /> */}
 
         <TouchableOpacity activeOpacity={0.4}
-          // onPress={handleLogin}
+          onPress={onLogin}
           style={styles.btnview}>
           <Text style={styles.loginbtn}>{strings.LOGIN}</Text>
         </TouchableOpacity>
