@@ -1,4 +1,4 @@
-import { SIGNUP } from "../../config/urls";
+import { SIGNUP ,LOGIN} from "../../config/urls";
 import { apiPost, setUserData } from "../../utils/utils";
 import store from "../store";
 import types from "../types";
@@ -26,7 +26,7 @@ export const Logout = () => {
 
 export const login = (data, headers = {}) => {
     return new Promise((resolve, reject) => {
-      apiPost(LOGIN_API, data, headers)
+      apiPost(LOGIN, data, headers)
         .then(res => {
           setUserData(res.data).then(suc => {
             saveUserData(res.data);

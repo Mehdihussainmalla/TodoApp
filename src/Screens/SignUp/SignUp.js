@@ -8,8 +8,8 @@ import actions from '../../Redux/actions';
 import { useSelector } from 'react-redux';
 
 const SignUp = () => {
-    const userData = useSelector(state => state?. auth?.userData)
-    console.log("user Data", userData)
+    // const userData = useSelector(state => state?.auth?.userData)
+    // console.log("user Data", userData)
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -24,20 +24,20 @@ const SignUp = () => {
     const onSignup = async () => {
 
         let apiData = {
-            first_name:  firstName ,
+            first_name: firstName,
             last_name: lastName,
-            email: email ,
-            phone: phone ,
-            phone_code: phoneCode ,
-            country_code: countryCode ,
-            device_token:  deviceToken ,
+            email: email,
+            phone: phone,
+            phone_code: phoneCode,
+            country_code: countryCode,
+            device_token: deviceToken,
             device_type: Platform.OS == 'ios' ? 'IOS' : 'ANDROID',
-            password:  password 
+            password: password
         }
-        console.log(apiData)
+        // console.log(apiData)
         try {
             const res = await actions.signUp(apiData)
-            console.log("signup api res_+++++", res)
+            console.log("signup api is......", res)
             alert("User signup sucessfully !")
         } catch (error) {
             console.log("error raised", error)

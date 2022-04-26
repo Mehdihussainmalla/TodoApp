@@ -17,15 +17,20 @@ import navigationStrings from '../../navigation/navigationStrings';
 
 
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
   const emailRegex = /^[\w-\.\_\$]{2,}@([\w]{3,5}\.)[\w]{2,4}$/;
   const passWrdRegz = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
-  const [email, setemail] = useState();
+  // const [email, setemail] = useState();
 
 
   const [password, setPassword] = useState('');
-  
+  const [phone, setPhone] = useState('');
+  const [phoneCode, setPhoneCode] = useState('');
+  const [deviceToken, setDeviceToken] = useState('');
+  const [deviceType, setDeviceType] = useState('');
+
+
 
   const [isModalvisible, setModalVisible] = useState(false);
 
@@ -95,7 +100,7 @@ const LoginScreen = ({navigation}) => {
   const onFbLogin = async () => {
     try {
       await fbLogin(resInfoCallBack)
-    
+
     } catch (error) {
       console.log("error", error)
     }
@@ -111,10 +116,10 @@ const LoginScreen = ({navigation}) => {
 
     }
   }
-  const userData = {
-    email: email,
-    password: password
-  }
+  // const userData = {
+  //   email: email,
+  //   password: password
+  // }
 
 
   const onchangeLang = (key) => {
@@ -125,34 +130,54 @@ const LoginScreen = ({navigation}) => {
 
   }
 
-  const handleLogin = () => {
+  const onLogin = () => {
+    let apiData = {
+      phone: phone,
+      deviceToken: deviceToken,
+      password: password,
+      deviceType: deviceType,
+      phoneCode: phoneCode,
 
-    if (email === "") {
-      console.log('please enter email')
     }
+    try {
+      const res = await actions.login(apiData)
+      console.log('api login res.....', res)
+      alert('login sucessfully')
 
-    else if (!emailRegex.test(email)) {
-      console.log('Invalid email')
+    } catch (error) {
+      console.log('error occurred in api login', error)
+      alert(error?.message)
     }
-
-    else if (password === "") {
-      console.log('please enter password')
-    }
-
-    else if (password.length < 6) {
-      console.log('please enter correct password')
-    }
-
-    else if (!passWrdRegz.test(password)) {
-      console.log('please enter valid password')
-    }
-    else {
-
-      actions.saveUserData([userData])
-    }
-
-
   }
+
+  // const handleLogin = () => {
+
+  //   if (email === "") {
+  //     console.log('please enter email')
+  //   }
+
+  //   else if (!emailRegex.test(email)) {
+  //     console.log('Invalid email')
+  //   }
+
+  //   else if (password === "") {
+  //     console.log('please enter password')
+  //   }
+
+  //   else if (password.length < 6) {
+  //     console.log('please enter correct password')
+  //   }
+
+  //   else if (!passWrdRegz.test(password)) {
+  //     console.log('please enter valid password')
+  //   }
+  //   else {
+
+  //     actions.saveUserData([userData])
+  //   }
+
+
+  // }
 
 
 
@@ -161,18 +186,33 @@ const LoginScreen = ({navigation}) => {
     <WrapperContainer>
       <View style={styles.loginview}>
 
-        <TextInputComponent onChangeText={event => setemail(event)}
-          placeholder={strings.ENTER_YOUR_EMAIL}
+        {/* <TextInputComponent onChangeText={event => setemail(event)} */}
+        {/* placeholder={strings.ENTER_YOUR_EMAIL}  />*/}
+
+        <TextInputComponent onChangeText={event => setPhone(event)}
+          placeholder={strings.PHONE}
+        />
+        <TextInputComponent onChangeText={event => setDeviceToken(event)}
+          placeholder={strings.DEVICE_TOKEN}
         />
         <TextInputComponent onChangeText={event => setPassword(event)}
-          placeholder={strings.ENTER_PASSWORD}
+          placeholder={strings.PASSWORD}
+        />
+        <TextInputComponent onChangeText={event => setDeviceType(event)}
+          placeholder={strings.DEVICE_TYPE}
+        />
+        <TextInputComponent onChangeText={event => setPhoneCode(event)}
+          placeholder={strings.PHONE_CODE}
         />
 
-        <TouchableOpacity activeOpacity={0.4} onPress={handleLogin} style={styles.btnview}>
+        <TouchableOpacity activeOpacity={0.4}
+          // onPress={handleLogin}
+          style={styles.btnview}>
           <Text style={styles.loginbtn}>{strings.LOGIN}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleModal}
+        <TouchableOpacity
+          //  onPress={handleModal}
           style={styles.btnview}>
           <Text style={styles.loginbtn}>{strings.CHANGE_LANGUAGE}</Text>
         </TouchableOpacity>
@@ -211,15 +251,17 @@ const LoginScreen = ({navigation}) => {
 
 
           <TouchableOpacity style={styles.hidebtn}>
-            <BtnComp title={strings.HIDE} onPress={handleModal} />
+            <BtnComp title={strings.HIDE}
+            // onPress={handleModal}
+            />
           </TouchableOpacity>
         </Modal>
-        <TouchableOpacity onPress={()=>navigation.navigate(navigationStrings.SIGN_UP)} activeOpacity={0.5} style={styles.signupview}>
-        <Text style={styles.signuptext}>signup</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate(navigationStrings.SIGN_UP)} activeOpacity={0.5} style={styles.signupview}>
+          <Text style={styles.signuptext}>{strings.SIGN_UP}</Text>
+        </TouchableOpacity>
       </View>
-    
-        
+
+
 
     </WrapperContainer>
   )
